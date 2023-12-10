@@ -1,19 +1,11 @@
-import { FC, useEffect } from "react";
-
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 
-const Home: FC = () => {
-  const token = localStorage.getItem("token");
+import { useData } from "./useData";
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
-  }, [token, navigate]);
+const Home = () => {
+  const data = useData();
 
   return (
     <Box
@@ -33,7 +25,7 @@ const Home: FC = () => {
         <Typography variant="h6" gutterBottom>
           Todo List
         </Typography>
-        <Button variant="contained" color="warning">
+        <Button variant="contained" color="warning" onClick={data.loggingOut}>
           Logout
         </Button>
       </Box>

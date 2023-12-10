@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 
+import { REGISTER } from "../../../constants/routes";
 import { useData } from "./useData";
 
 const Login = () => {
@@ -57,7 +58,7 @@ const Login = () => {
       <Divider />
       <Typography textAlign="center">
         Already registered? &nbsp;
-        <Link to="/register">Register</Link>
+        <Link to={REGISTER}>Register</Link>
       </Typography>
     </Box>
   );

@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-import { defer } from "react-router-dom";
-
-import { http } from "../../../providers/api/http";
 import { Todo } from "../../../services/utils/types";
 
 export const useData = () => {
@@ -70,13 +67,13 @@ export const useData = () => {
   };
 };
 
-export async function todoLoader() {
-  return defer({
-    todo: loadTodo(),
-  });
-}
+// export async function todoLoader() {
+//   return defer({
+//     todo: loadTodo(),
+//   });
+// }
 
-const loadTodo = async () => {
-  const response = await http.get("/todos");
-  return response.data;
-};
+// const loadTodo = async () => {
+//   const response = await http.get("/todos");
+//   return response.data;
+// };

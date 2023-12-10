@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useMutation } from "@tanstack/react-query";
 
+import { HOME_ROUTE } from "../../../constants/routes";
 import { loginMutateFn } from "../../../services/auth/loginMutationFn";
 import { ILoginData } from "../../../services/utils/types";
 
@@ -22,7 +23,7 @@ export const useData = () => {
   const mutation = useMutation({
     mutationFn: loginMutateFn,
     onSuccess: () => {
-      navigate("/");
+      navigate(HOME_ROUTE);
     },
     onError: (err) => {
       setLoginError(err);
@@ -42,13 +43,3 @@ export const useData = () => {
     loginError,
   };
 };
-
-// export async function loginAction({ request }: { request: any }) {
-//   const formData = await request.formData();
-//   const data = Object.fromEntries(formData);
-//   const response = await http.post("/users", data);
-//   if (response.status === 200) {
-//     localStorage.setItem("token", response?.data.token);
-//     return redirect(HOME_ROUTE);
-//   }
-// }
