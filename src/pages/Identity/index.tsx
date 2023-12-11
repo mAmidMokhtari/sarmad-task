@@ -8,6 +8,8 @@ const IdentityLayout = () => {
       display="flex"
       flexDirection="column"
       minHeight="100vh"
+      maxWidth="400px"
+      margin="auto"
       bgcolor="background.default"
       width="100%"
     >

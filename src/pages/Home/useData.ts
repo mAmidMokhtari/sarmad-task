@@ -6,7 +6,6 @@ import { LOG_IN } from "../../constants/routes";
 
 export const useData = () => {
   const token = localStorage.getItem("token");
-
   const navigate = useNavigate();
 
   useEffect(() => {

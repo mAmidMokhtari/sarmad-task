@@ -22,7 +22,9 @@ export const useData = () => {
 
   const mutation = useMutation({
     mutationFn: loginMutateFn,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      const token = data.token;
+      localStorage.setItem("token", token);
       navigate(HOME_ROUTE);
     },
     onError: (err) => {
@@ -32,6 +34,8 @@ export const useData = () => {
 
   const onSubmit = handleSubmit((data) => {
     mutation.mutate(data);
+    localStorage.setItem("username", data.name);
+    localStorage.setItem("email", data.email);
   });
 
   return {

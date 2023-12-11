@@ -1,15 +1,17 @@
 export interface ILoginData {
   name: string;
+  email: string;
   password: string;
 }
 
 export interface IRegisterData {
-  username: string;
+  name: string;
+  email: string;
   password: string;
-  confirmPassword?: string;
+  password_confirmation: string;
 }
 
 export interface Todo {
   id: number;
-  text: string;
+  title: string;
 }

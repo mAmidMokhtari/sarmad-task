@@ -20,13 +20,7 @@ const Todo = () => {
   const data = useData();
 
   return (
-    <Box
-      width="100%"
-      maxWidth="lg"
-      bgcolor="background.paper"
-      boxShadow={10}
-      p={2}
-    >
+    <Box width="100%" bgcolor="background.paper" boxShadow={10} p={2}>
       <Box display="flex" alignItems="center" mt={2}>
         <TextField
           type="text"
@@ -47,7 +41,7 @@ const Todo = () => {
         </Button>
       </Box>
       <List sx={{ marginTop: "1rem" }}>
-        {data.todos.map((todo) => (
+        {data.todos?.map((todo) => (
           <ListItem
             key={todo.id}
             sx={{
@@ -82,7 +76,7 @@ const Todo = () => {
             ) : (
               <>
                 <ListItemText sx={{ flex: "1 1 50%" }}>
-                  {todo.text}
+                  {todo.title}
                 </ListItemText>
                 <IconButton
                   color="info"

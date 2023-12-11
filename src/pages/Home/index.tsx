@@ -15,12 +15,14 @@ const Home = () => {
       minHeight="100vh"
       bgcolor="background.default"
       gap={2}
+      maxWidth="lg"
+      margin="auto"
     >
       <Box
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
-        width="60%"
+        width="100%"
       >
         <Typography variant="h6" gutterBottom>
           Todo List

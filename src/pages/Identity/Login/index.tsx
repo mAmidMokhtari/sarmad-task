@@ -19,6 +19,20 @@ const Login = () => {
         gap={2}
       >
         <TextField
+          error={!!data.errors.email}
+          helperText={data.errors.email?.message}
+          label="Email"
+          {...data.register("email", {
+            required: true,
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Entered value does not match email format",
+            },
+          })}
+        />
+        <TextField
+          error={!!data.errors.name}
+          helperText={data.errors.name?.message}
           label="Name"
           {...data.register("name", {
             required: true,
@@ -26,21 +40,13 @@ const Login = () => {
             maxLength: 20,
           })}
         />
-        {data.errors.name && data.errors.name.type === "required" && (
-          <Typography variant="body1" color="error">
-            Name is required
-          </Typography>
-        )}
         <TextField
+          error={!!data.errors.password}
+          helperText={data.errors.password?.message}
           label="Password"
           type="password"
           {...data.register("password", { required: true })}
         />
-        {data.errors.password && data.errors.password.type === "required" && (
-          <Typography variant="body1" color="error">
-            Password is required
-          </Typography>
-        )}
         {data.loginError && (
           <Typography variant="body1" color="error">
             {data.loginError.message}

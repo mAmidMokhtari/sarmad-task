@@ -19,39 +19,40 @@ const Register = () => {
         gap={2}
       >
         <TextField
-          label="Username"
-          {...data.register("username", {
+          error={!!data.errors.email}
+          helperText={data.errors.email?.message}
+          label="Email"
+          {...data.register("email", {
+            required: true,
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Entered value does not match email format",
+            },
+          })}
+        />
+        <TextField
+          error={!!data.errors.name}
+          helperText={data.errors.name?.message}
+          label="Name"
+          {...data.register("name", {
             required: true,
             minLength: 3,
             maxLength: 20,
           })}
         />
-        {data.errors.username && data.errors.username.type === "required" && (
-          <Typography variant="body1" color="error">
-            Username is required
-          </Typography>
-        )}
-        {data.errors.username &&
-          (data.errors.username.type === "minLength" ||
-            data.errors.username.type === "maxLength") && (
-            <Typography variant="body1" color="error">
-              Username must be 3 digits at least
-            </Typography>
-          )}
         <TextField
+          error={!!data.errors.password}
+          helperText={data.errors.password?.message}
           label="Password"
           type="password"
           {...data.register("password", { required: true })}
         />
-        {data.errors.password && data.errors.password.type === "required" && (
-          <Typography variant="body1" color="error">
-            Password is required
-          </Typography>
-        )}
         <TextField
+          error={!!data.errors.password_confirmation}
+          helperText={data.errors.password_confirmation?.message}
           label="Repeat password"
           type="password"
-          {...data.register("confirmPassword", {
+          {...data.register("password_confirmation", {
             required: true,
             validate: (value) => {
               if (data.watch("password") !== value) {
@@ -60,19 +61,6 @@ const Register = () => {
             },
           })}
         />
-        {data.errors.confirmPassword &&
-          data.errors.confirmPassword.type === "required" && (
-            <Typography variant="body1" color="error">
-              Repeat password is required
-            </Typography>
-          )}
-        {data.errors.confirmPassword &&
-          data.errors.confirmPassword.type === "validate" && (
-            <Typography variant="body1" color="error">
-              {data.errors.confirmPassword?.message}
-            </Typography>
-          )}
-
         {data.registerError && (
           <Typography variant="body1" color="error">
             {data.registerError.message}
