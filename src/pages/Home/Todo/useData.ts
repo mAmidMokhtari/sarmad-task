@@ -21,7 +21,6 @@ export const useData = () => {
     mutationFn: postTodo,
     onSuccess: (data: Todo) => {
       data && setTodos((prevState) => [data, ...prevState]);
-
       setInputText("");
     },
   });
