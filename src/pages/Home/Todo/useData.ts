@@ -14,13 +14,13 @@ export const useData = () => {
   const { data, error, isLoading, postTodo, deleteTodo, editTodo } = useTodo();
 
   useEffect(() => {
-    data && setTodos(data);
+    data && setTodos(data.slice(0, 20));
   }, [data]);
 
-  const todoMutation = useMutation({
+  const addTodoMutation = useMutation({
     mutationFn: postTodo,
     onSuccess: (data: Todo) => {
-      data && setTodos((prevState) => [...prevState, data]);
+      data && setTodos((prevState) => [data, ...prevState]);
 
       setInputText("");
     },
@@ -52,7 +52,6 @@ export const useData = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
-    console.log("first");
   };
 
   const handleAddTodo = () => {
@@ -65,7 +64,7 @@ export const useData = () => {
       title: inputText,
     };
 
-    todoMutation.mutate(newTodo);
+    addTodoMutation.mutate(newTodo);
   };
 
   const handleDeleteTodo = (id: number) => {
@@ -96,7 +95,7 @@ export const useData = () => {
     editingTodoId,
     editingText,
     editTodoMutation,
-    todoMutation,
+    addTodoMutation,
     deleteTodoMutation,
     setEditingText,
     handleInputChange,
