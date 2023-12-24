@@ -16,11 +16,24 @@ import {
 
 import { IProps } from "./type";
 
-const ListTodo: FC<IProps> = ({ data }) => {
+const ListTodo: FC<IProps> = ({
+  data: {
+    isLoading,
+    todos,
+    editingTodoId,
+    editingText,
+    setEditingText,
+    handleUpdateTodo,
+    handleEditTodo,
+    editTodoMutation,
+    handleDeleteTodo,
+    deleteTodoMutation,
+  },
+}) => {
   return (
     <List sx={{ marginTop: "1rem" }}>
-      {data.isLoading && <LinearProgress />}
-      {data.todos?.map((todo) => (
+      {isLoading && <LinearProgress />}
+      {todos?.map((todo) => (
         <ListItem
           key={todo.id}
           sx={{
@@ -34,12 +47,12 @@ const ListTodo: FC<IProps> = ({ data }) => {
             p: 2,
           }}
         >
-          {data.editingTodoId === todo.id ? (
+          {editingTodoId === todo.id ? (
             <>
               <TextField
                 type="text"
-                value={data.editingText}
-                onChange={(event) => data.setEditingText(event.target.value)}
+                value={editingText}
+                onChange={(event) => setEditingText(event.target.value)}
                 variant="outlined"
                 fullWidth
                 sx={{ marginRight: "1rem" }}
@@ -47,7 +60,7 @@ const ListTodo: FC<IProps> = ({ data }) => {
               <IconButton
                 color="primary"
                 size="large"
-                onClick={data.handleUpdateTodo}
+                onClick={handleUpdateTodo}
               >
                 <CheckBox />
               </IconButton>
@@ -58,16 +71,16 @@ const ListTodo: FC<IProps> = ({ data }) => {
               <IconButton
                 color="info"
                 size="large"
-                onClick={() => data.handleEditTodo(todo.id)}
-                disabled={data.editTodoMutation.isPending}
+                onClick={() => handleEditTodo(todo.id)}
+                disabled={editTodoMutation.isPending}
               >
                 <CreateIcon />
               </IconButton>
               <IconButton
                 color="error"
                 size="large"
-                onClick={() => data.handleDeleteTodo(todo.id)}
-                disabled={data.deleteTodoMutation.isPending}
+                onClick={() => handleDeleteTodo(todo.id)}
+                disabled={deleteTodoMutation.isPending}
               >
                 <CloseIcon />
               </IconButton>
