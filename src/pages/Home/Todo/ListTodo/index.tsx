@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   CheckBox,
   Close as CloseIcon,
@@ -12,11 +14,9 @@ import {
   TextField,
 } from "@mui/material";
 
-import { useData } from "../useData";
+import { IProps } from "./type";
 
-const ListTodo = () => {
-  const data = useData();
-
+const ListTodo: FC<IProps> = ({ data }) => {
   return (
     <List sx={{ marginTop: "1rem" }}>
       {data.isLoading && <LinearProgress />}

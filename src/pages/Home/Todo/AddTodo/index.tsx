@@ -1,11 +1,11 @@
+import { FC } from "react";
+
 import { Add as AddIcon } from "@mui/icons-material";
 import { Box, CircularProgress, IconButton, TextField } from "@mui/material";
 
-import { useData } from "../useData";
+import { IProps } from "./type";
 
-const AddTodo = () => {
-  const data = useData();
-
+const AddTodo: FC<IProps> = ({ data }) => {
   return (
     <Box display="flex" alignItems="center" mt={2}>
       <TextField
