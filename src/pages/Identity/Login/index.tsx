@@ -54,11 +54,11 @@ const Login = () => {
         )}
         <Button
           type="submit"
-          disabled={data.isSubmitting}
+          disabled={data.isLoading}
           variant="contained"
           color="info"
         >
-          {data.isSubmitting ? "logging in..." : "login"}
+          {data.isLoading ? "logging in..." : "login"}
         </Button>
       </Box>
       <Divider />

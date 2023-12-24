@@ -68,11 +68,11 @@ const Register = () => {
         )}
         <Button
           type="submit"
-          disabled={data.isSubmitting}
+          disabled={data.isLoading}
           variant="contained"
           color="info"
         >
-          {data.isSubmitting ? "Saving ..." : "Register"}
+          {data.isLoading ? "Saving ..." : "Register"}
         </Button>
       </Box>
       <Divider />

@@ -26,7 +26,7 @@ export const useData = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<IRegisterData>({
     resolver: yupResolver(RegisterSchema),
   });
@@ -53,11 +53,11 @@ export const useData = () => {
   });
 
   return {
-    isSubmitting,
     onSubmit,
     errors,
     watch,
     register,
     registerError,
+    isLoading: mutation.isPending,
   };
 };

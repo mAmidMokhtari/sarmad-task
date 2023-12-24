@@ -13,7 +13,7 @@ export const useData = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ILoginData>();
 
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ export const useData = () => {
     register,
     handleSubmit,
     errors,
-    isSubmitting,
     loginError,
+    isLoading: mutation.isPending,
   };
 };
